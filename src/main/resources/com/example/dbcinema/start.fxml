@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dbcinema.controllers.StartController">
+   <children>
+      <Button id="1" fx:id="button1" layoutX="213.0" layoutY="331.0" mnemonicParsing="false" onAction="#onLoadCustomersClicked" text="Show all customers" />
+      <TableView fx:id="table" layoutX="9.0" layoutY="61.0" prefHeight="245.0" prefWidth="290.0">
+        <columns>
+            <TableColumn prefWidth="52.79998779296875" text="id" />
+            <TableColumn prefWidth="60.800048828125" text="first name" />
+            <TableColumn prefWidth="58.4000244140625" text="last name" />
+            <TableColumn prefWidth="44.7999267578125" text="email" />
+            <TableColumn prefWidth="69.5999755859375" text="phone number" />
+        </columns>
+      </TableView>
+      <TextField fx:id="textbox" layoutX="195.0" layoutY="14.0" prefHeight="26.0" prefWidth="210.0" text="Welcome to the Admin's Homepage" />
+      <Button fx:id="addmov" layoutX="129.0" layoutY="331.0" mnemonicParsing="false" onAction="#addmovie" text="add movie" />
+      <Button fx:id="updmov" layoutX="339.0" layoutY="331.0" mnemonicParsing="false" onAction="#updatemovie" text="update movie" />
+      <Button fx:id="deletemov" layoutX="446.0" layoutY="331.0" mnemonicParsing="false" onAction="#deletemovie" text="delete movie" />
+      <Button fx:id="allmoviesbut" layoutX="14.0" layoutY="331.0" mnemonicParsing="false" onAction="#showmovies" text="Show all movies" />
+      <TextField fx:id="movtext" layoutX="414.0" layoutY="67.0" />
+      <TextField fx:id="langtext" layoutX="416.0" layoutY="112.0" />
+      <TextField fx:id="gentext" layoutX="414.0" layoutY="200.0" />
+      <Label fx:id="movlabel" layoutX="339.0" layoutY="71.0" text="Movie Name " />
+      <Label fx:id="langlabel" layoutX="346.0" layoutY="116.0" text="Language" />
+      <TextField fx:id="durtext" layoutX="416.0" layoutY="158.0" />
+      <Label fx:id="durlabel" layoutX="351.0" layoutY="162.0" text="Duration" />
+      <Label fx:id="genlabel" layoutX="359.0" layoutY="204.0" text="Genre" />
+   </children>
+</AnchorPane>
