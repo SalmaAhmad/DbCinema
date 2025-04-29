@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.cinemadb.MovieListController"
+            style="-fx-background-color: linear-gradient(to bottom, #0a0a2a, #1a1a4a);">
+
+  <!-- Top Decorative Bar -->
+  <top>
+    <VBox spacing="15" style="-fx-padding: 20;">
+      <Rectangle height="4" fill="#ff355e">
+        <effect>
+          <DropShadow color="#ff355e" radius="15" spread="0.3"/>
+        </effect>
+      </Rectangle>
+
+      <HBox alignment="CENTER" spacing="20">
+        <Label text="CINEMAX"
+               style="-fx-text-fill: #aaccff; -fx-font-size: 28px; -fx-font-weight: bold;
+                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7), 5, 0.5, 0, 1);"/>
+
+        <!-- Genre Filter ComboBox -->
+        <ComboBox fx:id="genreComboBox"
+                  promptText="Genre"
+                  onAction="#filterByGenre"
+                  style="-fx-background-color: #fd5b78; -fx-text-fill: white; -fx-background-radius: 20;
+                         -fx-padding: 8 20; -fx-font-weight: bold; -fx-pref-width: 120;"/>
+
+        <!-- Search Bar -->
+        <HBox alignment="CENTER_LEFT" spacing="10"
+              style="-fx-background-color: rgba(30,60,114,0.3); -fx-background-radius: 20;
+                     -fx-padding: 5; -fx-border-color: #fd5b78; -fx-border-width: 1;
+                     -fx-border-radius: 20;">
+          <TextField fx:id="searchField"
+                     promptText="Search movies..."
+                     style="-fx-background-color: transparent; -fx-text-fill: white;
+                            -fx-prompt-text-fill: #aaccff; -fx-pref-width: 300; -fx-padding: 8;"/>
+          <Button text="SEARCH"
+                  onAction="#searchMovies"
+                  style="-fx-background-color: #fd5b78; -fx-text-fill: white;
+                         -fx-font-weight: bold; -fx-padding: 8 20; -fx-background-radius: 20;"/>
+        </HBox>
+      </HBox>
+    </VBox>
+  </top>
+
+  <!-- Main Content -->
+  <center>
+    <VBox spacing="20" alignment="TOP_CENTER" style="-fx-padding: 0 40 40 40;">
+      <Label text="NOW SHOWING"
+             style="-fx-text-fill: #aaccff; -fx-font-size: 24px; -fx-font-weight: bold;
+                    -fx-padding: 0 0 10 0;
+                    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 3, 0.5, 0, 1);"/>
+
+      <Separator style="-fx-background-color: #fd5b78;"/>
+
+      <ListView fx:id="movieListView"
+                style="-fx-background-color: transparent;
+                       -fx-control-inner-background: transparent;">
+        <effect>
+          <DropShadow color="rgba(0,0,0,0.5)" radius="10" spread="0.1"/>
+        </effect>
+      </ListView>
+    </VBox>
+  </center>
+
+  <!-- Footer -->
+  <bottom>
+    <VBox>
+      <HBox alignment="CENTER_RIGHT"
+            style="-fx-padding: 15; -fx-background-color: rgba(30,60,114,0.3);">
+        <Button text="ADMIN LOGIN"
+                style="-fx-background-color: transparent; -fx-text-fill: #aaccff;
+                       -fx-font-weight: bold; -fx-padding: 8 20;
+                       -fx-border-color: #fd5b78; -fx-border-width: 2;
+                       -fx-border-radius: 20;"/>
+      </HBox>
+
+      <Rectangle height="4" fill="#ff355e">
+        <effect>
+          <DropShadow color="#ff355e" radius="15" spread="0.3"/>
+        </effect>
+      </Rectangle>
+    </VBox>
+  </bottom>
+</BorderPane>
