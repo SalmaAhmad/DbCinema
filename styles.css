@@ -1,0 +1,92 @@
+/* styles.css */
+.root {
+    -fx-background-color: #2d2d2d;
+    -fx-padding: 20;
+}
+
+.movie-title {
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.section-header {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-padding: 10 0 5 0;
+}
+
+/* Style for showtime cards will be handled in controller */
+
+
+/* styles.css */
+.root {
+    -fx-background-color: #2d2d2d;
+}
+
+.card {
+    -fx-background-color: #3d3d3d;
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 5);
+}
+
+.label-header {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.text-field {
+    -fx-background-color: #4d4d4d;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #999999;
+}
+
+.choice-box {
+    -fx-background-color: #4d4d4d;
+    -fx-mark-color: white;
+    -fx-text-fill: white;
+}
+
+.button-primary {
+    -fx-background-color: #e50914;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.button-primary:hover {
+    -fx-background-color: #ff1a1a;
+}
+
+.button {
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-text-fill: #e50914 !important;
+}
+.custom-tab {
+    -fx-background-color: rgba(30,60,114,0.5);
+    -fx-background-radius: 10 10 0 0;
+    -fx-border-color: #fd5b78;
+    -fx-border-width: 1;
+    -fx-border-radius: 10 10 0 0;
+    -fx-text-fill: #aaccff;
+    -fx-padding: 8 15;
+}
+
+.custom-tab:selected {
+    -fx-background-color: linear-gradient(to bottom, #fd5b78, #ff355e);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.tab-pane {
+    -fx-tab-min-width: 120px;
+    -fx-tab-min-height: 40px;
+}
