@@ -1,38 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.Cursor?>
 
-<?import javafx.scene.shape.Rectangle?>
-<HBox xmlns:fx="http://javafx.com/fxml"
-      fx:id="cellRoot"
-      style="-fx-background-color: rgba(30,60,114,0.3); -fx-background-radius: 10; -fx-padding: 15; -fx-spacing: 20; -fx-border-color: #fd5b78; -fx-border-width: 1; -fx-border-radius: 10;">
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.cinemadb.CustomerFormController"
+      spacing="25"
+      style="-fx-background-color: linear-gradient(to bottom, #0a0a2a, #1a1a4a); -fx-padding: 30;"
+      prefWidth="500">
 
-    <!-- Placeholder for Movie Poster -->
-    <Rectangle width="120" height="180" arcWidth="10" arcHeight="10" fill="linear-gradient(to bottom, #1e3c72, #2a5298)">
+    <!-- Top Decorative Bar -->
+    <Rectangle  height="4" fill="#ff355e">
         <effect>
-            <DropShadow color="rgba(0,0,0,0.5)" radius="10" spread="0.2"/>
+            <DropShadow color="#ff355e" radius="15" spread="0.3"/>
         </effect>
     </Rectangle>
 
-    <!-- Movie Details -->
-    <VBox alignment="TOP_LEFT" spacing="10" style="-fx-padding: 5;">
-        <Label fx:id="titleLabel" style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+    <!-- Header with Back Button -->
+    <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 0 0 10 0;">
+        <Button fx:id="backButton" text="← BACK"
+                onAction="#handleBackButtonAction1"
+                style="-fx-background-color: transparent; -fx-text-fill: #aaccff; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 8 15; -fx-border-color: #fd5b78; -fx-border-width: 2; -fx-border-radius: 20;">
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+        <Label text="COMPLETE YOUR BOOKING"
+               style="-fx-text-fill: #aaccff; -fx-font-size: 24px; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7), 5, 0.5, 0, 1);"/>
+    </HBox>
 
-        <HBox spacing="15" alignment="CENTER_LEFT">
-            <Label fx:id="genreLabel" style="-fx-text-fill: #aaccff;"/>
-            <Label fx:id="durationLabel" style="-fx-text-fill: #aaccff;"/>
-            <Label fx:id="ratingLabel" style="-fx-text-fill: #ffcc00; -fx-font-weight: bold;"/>
-        </HBox>
+    <!-- Customer Information Card -->
+    <VBox style="-fx-background-color: rgba(30,60,114,0.3); -fx-background-radius: 10; -fx-padding: 20; -fx-border-color: #fd5b78; -fx-border-width: 1; -fx-border-radius: 10;">
+        <Label text="CUSTOMER INFORMATION"
+               style="-fx-text-fill: #aaccff; -fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 0 0 10 0;"/>
 
-        <Label fx:id="descriptionLabel" wrapText="true" style="-fx-text-fill: #cccccc; -fx-max-width: 500;"/>
+        <Separator style="-fx-background-color: #fd5b78;"/>
+
+        <GridPane hgap="15" vgap="15" style="-fx-padding: 10 0 0 0;">
+            <columnConstraints>
+                <ColumnConstraints prefWidth="120"/>
+                <ColumnConstraints prefWidth="300"/>
+            </columnConstraints>
+
+            <Label text="First Name:" style="-fx-text-fill: #aaccff; -fx-font-weight: bold;"/>
+            <TextField fx:id="firstNameField" GridPane.columnIndex="1"
+                       style="-fx-background-color: rgba(30,60,114,0.5); -fx-text-fill: white; -fx-prompt-text-fill: #aaccff; -fx-border-color: #fd5b78; -fx-border-width: 1; -fx-border-radius: 5;"/>
+
+            <Label text="Last Name:" style="-fx-text-fill: #aaccff; -fx-font-weight: bold;" GridPane.rowIndex="1"/>
+            <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                       style="-fx-background-color: rgba(30,60,114,0.5); -fx-text-fill: white; -fx-prompt-text-fill: #aaccff; -fx-border-color: #fd5b78; -fx-border-width: 1; -fx-border-radius: 5;"/>
+
+            <Label text="Email:" style="-fx-text-fill: #aaccff; -fx-font-weight: bold;" GridPane.rowIndex="2"/>
+            <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="2"
+                       style="-fx-background-color: rgba(30,60,114,0.5); -fx-text-fill: white; -fx-prompt-text-fill: #aaccff; -fx-border-color: #fd5b78; -fx-border-width: 1; -fx-border-radius: 5;"/>
+
+            <Label text="Phone:" style="-fx-text-fill: #aaccff; -fx-font-weight: bold;" GridPane.rowIndex="3"/>
+            <TextField fx:id="phoneField" GridPane.columnIndex="1" GridPane.rowIndex="3"
+                       style="-fx-background-color: rgba(30,60,114,0.5); -fx-text-fill: white; -fx-prompt-text-fill: #aaccff; -fx-border-color: #fd5b78; -fx-border-width: 1; -fx-border-radius: 5;"/>
+
+            <Label text="Seat Type:" style="-fx-text-fill: #aaccff; -fx-font-weight: bold;" GridPane.rowIndex="4"/>
+            <ChoiceBox fx:id="seatTypeChoice" GridPane.columnIndex="1" GridPane.rowIndex="4"
+                       style="-fx-background-color: rgba(30,60,114,0.5); -fx-text-fill: white; -fx-border-color: #fd5b78; -fx-border-width: 1; -fx-border-radius: 5;"/>
+        </GridPane>
     </VBox>
 
-    <!-- Show Details Button -->
-    <Button fx:id="detailsButton" text="🔍 SHOW DETAILS"
-            style="-fx-background-color: linear-gradient(to right, #fd5b78, #ff355e); -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 25; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(253,91,120,0.5), 10, 0.5, 0, 1);"
-            HBox.hgrow="ALWAYS"/>
-</HBox>
+    <!-- Payment Information Card -->
+    <VBox style="-fx-background-color: rgba(30,60,114,0.3); -fx-background-radius: 10; -fx-padding: 20; -fx-border-color: #fd5b78; -fx-border-width: 1; -fx-border-radius: 10;">
+        <Label text="PAYMENT DETAILS"
+               style="-fx-text-fill: #aaccff; -fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 0 0 10 0;"/>
+
+        <Separator style="-fx-background-color: #fd5b78;"/>
+
+        <GridPane hgap="15" vgap="15" style="-fx-padding: 10 0 0 0;">
+            <columnConstraints>
+                <ColumnConstraints prefWidth="120"/>
+                <ColumnConstraints prefWidth="300"/>
+            </columnConstraints>
+
+            <Label text="Payment Method:" style="-fx-text-fill: #aaccff; -fx-font-weight: bold;"/>
+            <ChoiceBox fx:id="paymentMethodChoice" GridPane.columnIndex="1"
+                       style="-fx-background-color: rgba(30,60,114,0.5); -fx-text-fill: white; -fx-border-color: #fd5b78; -fx-border-width: 1; -fx-border-radius: 5;"/>
+
+            <Label text="Total Amount:" style="-fx-text-fill: #aaccff; -fx-font-weight: bold;" GridPane.rowIndex="1"/>
+            <Label fx:id="totalPriceLabel" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                   style="-fx-text-fill: #ffcc00; -fx-font-weight: bold; -fx-font-size: 16px;"/>
+        </GridPane>
+    </VBox>
+
+    <!-- Complete Booking Button -->
+    <Button fx:id="completeBookingButton"
+            text="COMPLETE BOOKING"
+            onAction="#handleCompleteBooking"
+            style="-fx-background-color: linear-gradient(to right, #fd5b78, #ff355e); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px; -fx-padding: 12 30; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(253,91,120,0.5), 10, 0.5, 0, 1);">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Button>
+
+    <!-- Bottom Decorative Bar -->
+    <Rectangle  height="4" fill="#ff355e">
+        <effect>
+            <DropShadow color="#ff355e" radius="15" spread="0.3"/>
+        </effect>
+    </Rectangle>
+</VBox>
