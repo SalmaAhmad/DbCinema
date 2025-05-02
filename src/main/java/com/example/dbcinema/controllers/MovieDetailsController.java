@@ -220,4 +220,4 @@ public class MovieDetailsController {
         window.setScene(movieDetailsScene);
         window.show();
     }
-    }
+}
