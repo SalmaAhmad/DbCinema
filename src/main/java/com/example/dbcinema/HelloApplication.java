@@ -1,4 +1,4 @@
-package com.example.dbcinema;
+package org.example.cinemadb;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
