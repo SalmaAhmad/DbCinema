@@ -51,16 +51,9 @@ public class TicketViewController {
     }
 
     @FXML
-    private void handleBackToHome() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Movie-List.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = (Stage) totalLabel.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.centerOnScreen();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private void handleDoneButton() {
+        Stage stage = (Stage) totalLabel.getScene().getWindow();
+        stage.close(); // This will close the current window
     }
+
 }
