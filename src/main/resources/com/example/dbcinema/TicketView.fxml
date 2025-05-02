@@ -13,7 +13,7 @@
       spacing="25"
       alignment="CENTER"
       style="-fx-background-color: linear-gradient(to bottom, #0a0a2a, #1a1a4a); -fx-padding: 30;"
-      prefWidth="550">
+      prefWidth="800" prefHeight="600">
 
     <!-- Top Cinema Marquee Bar -->
     <Rectangle  height="6" fill="#ff355e">
@@ -87,8 +87,8 @@
             </cursor>
         </Button>
 
-        <Button text="🏠 BACK TO HOME"
-                onAction="#handleBackToHome"
+        <Button text="🏠 DONE"
+                onAction="#handleDoneButton"
                 style="-fx-background-color: linear-gradient(to right, #fd5b78, #ff355e); -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 25; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(253,91,120,0.5), 10, 0.5, 0, 1);">
             <cursor>
                 <Cursor fx:constant="HAND"/>
