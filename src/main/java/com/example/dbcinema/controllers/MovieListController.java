@@ -1,16 +1,21 @@
 package org.example.cinemadb;
 
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -39,10 +44,10 @@ public class MovieListController implements Initializable {
 
     private void loadMovies() {
         try (Connection conn = SQLServerConnect.getConnection();
-             CallableStatement stmt = conn.prepareCall("{call GetAllMovies()}")) { // stored procedure
+             CallableStatement stmt = conn.prepareCall("  SELECT * FROM Movie;")) {
 
             movieListView.getItems().clear();
-            ResultSet rs = stmt.executeQuery(); // Execute the query
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Movie movie = new Movie(
@@ -86,7 +91,7 @@ public class MovieListController implements Initializable {
         }
 
         try (Connection conn = getConnection();
-             CallableStatement stmt = conn.prepareCall("{call SearchMovies(?)}")) {// here we called the stored procedure
+             CallableStatement stmt = conn.prepareCall("{call SearchMovies(?)}")) {
 
             stmt.setString(1, searchText);
             ResultSet rs = stmt.executeQuery();
@@ -124,7 +129,7 @@ public class MovieListController implements Initializable {
 
         // Fetch genres from database and add them to the ComboBox
         try (Connection conn = SQLServerConnect.getConnection();
-             CallableStatement stmt = conn.prepareCall("{call GetAvailableGenre}")) {  // Call the stored procedure
+             CallableStatement stmt = conn.prepareCall("SELECT DISTINCT Genre FROM Movie;")) {
 
             ResultSet rs = stmt.executeQuery();  // Execute the procedure
 
@@ -174,6 +179,32 @@ public class MovieListController implements Initializable {
         movieListView.getItems().clear();
         movieListView.getItems().addAll(movies);
     }
+
+    public void handleAdminLogin(ActionEvent event) {   try {
+        // Load the login FXML
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+        Parent root = loader.load();
+
+        // Get the current stage
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        // Create new scene with fade transition
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+        stage.setScene(scene);
+
+        // Optional: Add fade animation
+        FadeTransition ft = new FadeTransition(Duration.millis(300), root);
+        ft.setFromValue(0.0);
+        ft.setToValue(1.0);
+        ft.play();
+
+    } catch (IOException e) {
+        showAlert("Navigation Error", "Failed to load admin login: " + e.getMessage());
+        e.printStackTrace();
+    }
+    }
+
 
 
     private class MovieListCell extends ListCell<Movie> {
@@ -254,6 +285,50 @@ public class MovieListController implements Initializable {
         private String formatDuration(int minutes) {
             return String.format("%dh %02dmin", minutes / 60, minutes % 60);
         }
+
+        private void handleAdminLogin(ActionEvent event) {
+            try {
+                // Load the login FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+                Parent root = loader.load();
+
+                // Get the current stage
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                // Create new scene with fade transition
+                Scene scene = new Scene(root);
+                scene.setFill(Color.TRANSPARENT);
+                stage.setScene(scene);
+
+                // Optional: Add fade animation
+                FadeTransition ft = new FadeTransition(Duration.millis(300), root);
+                ft.setFromValue(0.0);
+                ft.setToValue(1.0);
+                ft.play();
+
+            } catch (IOException e) {
+                showAlert("Navigation Error", "Failed to load admin login: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+
+        // Helper method for showing alerts (if you don't already have one)
+        private void showAlert(String title, String message) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle(title);
+            alert.setHeaderText(null);
+            alert.setContentText(message);
+
+            // Style the alert to match your theme
+            DialogPane dialogPane = alert.getDialogPane();
+            dialogPane.getStylesheets().add(
+                    getClass().getResource("/styles/alerts.css").toExternalForm()
+            );
+            dialogPane.getStyleClass().add("cinema-alert");
+
+            alert.showAndWait();
+        }
+
     }
 }
 
